@@ -1,0 +1,43 @@
+{
+  "name": "test-your-might",
+  "version": "1.0.0",
+  "description": "Test task",
+  "main": "src/index.tsx",
+  "scripts": {
+    "start": "webpack serve --mode development --open",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akhroman/test-your-might.git"
+  },
+  "author": "Roman Akhmetov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akhroman/test-your-might/issues"
+  },
+  "homepage": "https://github.com/akhroman/test-your-might#readme",
+  "dependencies": {
+    "@tanstack/react-query": "^4.43.0",
+    "antd": "^5.29.3",
+    "axios": "^1.13.6",
+    "dayjs": "^1.11.19",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-router-dom": "^6.30.3",
+    "styled-components": "^6.3.11"
+  },
+  "devDependencies": {
+    "@types/react": "^16.14.69",
+    "@types/react-dom": "^16.9.25",
+    "@types/styled-components": "^5.1.36",
+    "css-loader": "^7.1.4",
+    "html-webpack-plugin": "^5.6.6",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.3",
+    "webpack": "^5.105.4",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.3"
+  }
+}
