@@ -1,4 +1,4 @@
 export interface ICredentials {
-  login?: string;
-  pass?: string;
+    login?: string;
+    pass?: string;
 }
