@@ -7,6 +7,12 @@ export const AntdThemeProvider: React.FC = ({ children }) => (
       token: {
         colorPrimary: '#226099',
         colorInfo: '#226099',
+        borderRadius: 4,
+      },
+      components: {
+        Form: {
+          itemMarginBottom: 15,
+        },
       },
     }}
   >

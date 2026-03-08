@@ -1,9 +1,16 @@
 import React from 'react';
+import { Typography, Form, Input, Button, FormProps } from 'antd';
 import { TCompoundPage } from '@/shared/lib/router/types';
-import { loginLoader } from '../api/login-loader';
+import { AuthForm } from '@/features/auth/ui/auth-form';
+import { loginLoader } from '../model/login-loader';
 
 export const LoginPage: TCompoundPage = () => {
-  return <div>Login</div>;
+  return (
+    <>
+      <Typography.Title level={5}>Авторизация</Typography.Title>
+      <AuthForm />
+    </>
+  );
 };
 
 LoginPage.loader = loginLoader;

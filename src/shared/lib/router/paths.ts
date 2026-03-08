@@ -1,7 +1,13 @@
 import { getRoute } from './getRoute';
 
-export const PATH = {
-  root: getRoute(''),
-  login: getRoute('login'),
-  users: getRoute('users'),
+export enum ERoutes {
+  Root = 'root',
+  Login = 'login',
+  Users = 'users',
+}
+
+export const PATH: Record<ERoutes, ReturnType<typeof getRoute>> = {
+  [ERoutes.Root]: getRoute(''),
+  [ERoutes.Login]: getRoute('login'),
+  [ERoutes.Users]: getRoute('users'),
 };
