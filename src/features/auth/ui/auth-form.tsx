@@ -14,10 +14,10 @@ export const AuthForm: React.FC = () => {
     return (
         <Form onFinish={onFinish} layout="vertical">
             <Form.Item name="login">
-                <Input placeholder="Логин"/>
+                <Input placeholder="Логин" />
             </Form.Item>
             <Form.Item name="pass">
-                <Input.Password placeholder="Пароль"/>
+                <Input.Password placeholder="Пароль" />
             </Form.Item>
             <ButtonWrapper justifyContent="flex-end">
                 <Button type="primary" htmlType="submit" loading={isPending}>

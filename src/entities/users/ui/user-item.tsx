@@ -1,25 +1,29 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { List, Skeleton } from 'antd';
 import { dayjs } from '@/shared/lib/dayjs';
+import { useUserFormContext } from '@/entities/users/model/user-form-context';
 import { UserItemAvatar, UserItemTitle } from './user-item.styles';
 import { IUserItemProps } from '../model/types';
 
-export const UserItem: React.FC<IUserItemProps> = ({
-    avatar,
-    createdAt,
-    name,
-    loading
-}) => {
-    const formattedDate = dayjs.utc(createdAt).local().format('DD.MM.YYYY');
+export const UserItem: React.FC<IUserItemProps> = (props) => {
+    const { avatar, createdAt, name, loading } = props;
+    const { openEdit } = useUserFormContext();
+    const formattedDate = dayjs.utc(createdAt)
+        .local()
+        .format('DD.MM.YYYY');
+
+    const handleEdit = useCallback(() => {
+        openEdit(props);
+    }, [props]);
 
     return (
         <Skeleton loading={loading} active avatar>
             <List.Item>
                 <List.Item.Meta
                     avatar={
-                        <UserItemAvatar onClick={() => console.log('click')} src={avatar}/>
+                        <UserItemAvatar onClick={handleEdit} src={avatar} />
                     }
-                    title={<UserItemTitle>{name}</UserItemTitle>}
+                    title={<UserItemTitle onClick={handleEdit}>{name}</UserItemTitle>}
                     description={`Зарегистрирован ${formattedDate}`}
                 />
             </List.Item>

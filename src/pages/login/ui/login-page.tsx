@@ -8,7 +8,7 @@ export const LoginPage: TCompoundPage = () => {
     return (
         <>
             <Typography.Title level={5}>Авторизация</Typography.Title>
-            <AuthForm/>
+            <AuthForm />
         </>
     );
 };

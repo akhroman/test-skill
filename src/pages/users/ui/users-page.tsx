@@ -1,22 +1,36 @@
 import React from 'react';
-import { Button, Flex } from 'antd';
+import { Button, Flex, Modal } from 'antd';
 import { TCompoundPage } from '@/shared/lib/router/types';
 import { UsersList } from '@/entities/users/ui/user-list';
 import { useLogout } from '@/features/auth/model/useLogout';
-import { usersLoader } from '../model/users-loader';
+import { UserForm } from '@/features/users/ui/user-form';
 import { ButtonWrapper } from '@/shared/ui/button-wrapper';
+import { useUserFormContext } from '@/entities/users/model/user-form-context';
+import { usersLoader } from '../model/users-loader';
 
 export const UsersPage: TCompoundPage = () => {
     const { logout } = useLogout();
+    const { isOpen, close, openCreate, currentUser } = useUserFormContext();
     return (
         <>
             <Flex justify="flex-end" gap="large">
                 <Button type="primary" onClick={logout}>Выход</Button>
             </Flex>
-            <UsersList/>
+            <UsersList />
             <ButtonWrapper justifyContent="flex-start">
-                <Button type="primary">Создать пользователя</Button>
+                <Button type="primary" onClick={openCreate}>Создать пользователя</Button>
             </ButtonWrapper>
+            <Modal
+                title={`${currentUser ? 'Редактирование' : 'Создание'} пользователя`}
+                open={isOpen}
+                onCancel={close}
+                footer={null}
+                destroyOnHidden
+                closable={false}
+                maskClosable={false}
+            >
+                <UserForm />
+            </Modal>
         </>
     );
 };

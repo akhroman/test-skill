@@ -5,13 +5,13 @@ import { UserItem } from './user-item';
 import { ListWrapper } from './user-list.styles';
 
 export const UsersList: React.FC = () => {
-    const { data, isFetching } = useUsers();
+    const { data, isPlaceholderData } = useUsers();
     return (
         <ListWrapper>
             <List
                 itemLayout="horizontal"
                 dataSource={data}
-                renderItem={(item) => <UserItem {...item} loading={isFetching}/>}
+                renderItem={(item) => <UserItem {...item} loading={isPlaceholderData} />}
             />
         </ListWrapper>
     );

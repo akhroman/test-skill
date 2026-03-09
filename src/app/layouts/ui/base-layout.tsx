@@ -10,7 +10,7 @@ export const BaseLayout: React.FC = () => {
                 <Row justify="center">
                     <Col xs={24} sm={20} md={16} lg={12} xl={10}>
                         <AppWrapper>
-                            <Outlet/>
+                            <Outlet />
                         </AppWrapper>
                     </Col>
                 </Row>
