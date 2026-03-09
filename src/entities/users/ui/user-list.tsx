@@ -1,6 +1,6 @@
 import React from 'react';
 import { List } from 'antd';
-import { useUsers } from '@/features/users/model/useUsers';
+import { useUsers } from '@/entities/users/model/useUsers';
 import { UserItem } from './user-item';
 import { ListWrapper } from './user-list.styles';
 

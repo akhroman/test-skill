@@ -13,7 +13,8 @@ export const UserItem: React.FC<IUserItemProps> = (props) => {
         .format('DD.MM.YYYY');
 
     const handleEdit = useCallback(() => {
-        openEdit(props);
+        const { loading: _, ...editProps } = props;
+        openEdit(editProps);
     }, [props]);
 
     return (

@@ -1,8 +1,10 @@
-import { ConfigProvider } from 'antd';
 import React from 'react';
+import { ConfigProvider } from 'antd';
+import ruRU from 'antd/lib/locale/ru_RU';
 
 export const AntdThemeProvider: React.FC = ({ children }) => (
     <ConfigProvider
+        locale={ruRU}
         theme={{
             token: {
                 colorPrimary: '#226099',
@@ -12,6 +14,9 @@ export const AntdThemeProvider: React.FC = ({ children }) => (
             components: {
                 Form: {
                     itemMarginBottom: 15
+                },
+                Modal: {
+                    borderRadiusLG: 10
                 }
             }
         }}
