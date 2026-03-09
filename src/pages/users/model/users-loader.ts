@@ -1,4 +1,4 @@
-import { pageLoader } from '@/shared/lib/router/pageLoader';
+import { pageLoader } from '@/app/providers/router-provider';
 import { ERoutes } from '@/shared/lib/router/paths';
 
 export const usersLoader = async () => {

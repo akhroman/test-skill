@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { Button, Form, Input, Spin } from 'antd';
-import { useUserFormContext } from '@/entities/users/model/user-form-context';
+import { useUserFormModalContext } from '@/features/users/model/user-form-modal-context';
 import { ButtonWrapper } from '@/shared/ui/button-wrapper';
 import { StyledConfirmButton } from '@/features/users/ui/user-form.styles';
 import { ConfirmButton } from '@/shared/ui/confirm-button';
@@ -10,7 +10,7 @@ import { IUser } from '@/entities/users/model/types';
 
 export const UserForm: React.FC = () => {
     const [form] = Form.useForm();
-    const { currentUser, close } = useUserFormContext();
+    const { currentUser, close } = useUserFormModalContext();
     const { mutate, isLoading } = useUserMutate({ onSuccess: close });
 
     const handleFinish = useCallback(async (payload: IUser) => {

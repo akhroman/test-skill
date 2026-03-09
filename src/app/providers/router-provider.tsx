@@ -1,8 +1,31 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { BaseLayout } from '@/app/layouts';
 import { NotFoundPage } from '@/pages/not-found';
-import { lazyPage, pageLoader } from '@/shared/lib/router/pageLoader';
-import { PATH } from '@/shared/lib/router/paths';
-import { BaseLayout } from '../layouts';
+import { ERoutes, PATH } from '@/shared/lib/router/paths';
+import { TCompoundPage } from '@/shared/lib/router/types';
+import { checkAuth } from '@/entities/session/model/auth';
+import { appRedirect } from '@/shared/lib/router/redirect';
+
+const lazyPage = <T extends Record<string, TCompoundPage>>(
+    importFn: () => Promise<T>,
+    exportName: keyof T
+) => {
+    return async () => {
+        const module = await importFn();
+        const Component = module[exportName];
+        return { Component, loader: Component.loader };
+    };
+};
+
+export const pageLoader = async (from?: ERoutes) => {
+    const isAuth = checkAuth();
+    if (isAuth && from !== ERoutes.Users) {
+        return appRedirect(PATH.users);
+    } else if (!isAuth && from !== ERoutes.Login) {
+        return appRedirect(PATH.login);
+    }
+    return null;
+};
 
 export const router = createBrowserRouter([
     {

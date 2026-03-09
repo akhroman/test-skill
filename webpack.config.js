@@ -37,4 +37,5 @@ module.exports = {
     historyApiFallback: true, // Важно для React Router
     hot: true,
   },
+  stats: 'minimal',   
 };

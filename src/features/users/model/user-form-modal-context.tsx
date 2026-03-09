@@ -9,7 +9,7 @@ interface IUserFormContext {
     close: () => void;
 }
 
-const UserFormContext = createContext<IUserFormContext | undefined>(undefined);
+const UserFormModalContext = createContext<IUserFormContext | undefined>(undefined);
 
 export const UserFormContextProvider: React.FC = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -31,16 +31,16 @@ export const UserFormContextProvider: React.FC = ({ children }) => {
     };
 
     return (
-        <UserFormContext.Provider value={{ isOpen, currentUser, close, openCreate, openEdit }}>
+        <UserFormModalContext.Provider value={{ isOpen, currentUser, close, openCreate, openEdit }}>
             {children}
-        </UserFormContext.Provider>
+        </UserFormModalContext.Provider>
     );
 };
 
-export const useUserFormContext = () => {
-    const context = useContext(UserFormContext);
+export const useUserFormModalContext = () => {
+    const context = useContext(UserFormModalContext);
     if (!context) {
-        throw new Error('useUserFormContext должен использоваться внутри UserFormContext');
+        throw new Error('useUserFormModalContext должен использоваться внутри UserFormModalContext');
     }
     return context;
 };

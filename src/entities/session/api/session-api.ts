@@ -9,14 +9,16 @@ export const loginRequest = async ({
 }: ICredentials): Promise<string> => {
     return new Promise((res, rej) => {
         setTimeout(() => {
-            if (login === ADMIN_LOGIN && pass === ADMIN_PASS) {
+            const isValid = login === ADMIN_LOGIN && pass === ADMIN_PASS;
+            if (isValid) {
                 res(crypto.randomUUID());
+            } else {
+                rej(
+                    new Error(
+                        'Ошибка авторизации. Указаны неправильные логин и/или пароль'
+                    )
+                );
             }
-            rej(
-                new Error(
-                    'Ошибка авторизации. Указаны неправильные логин и/или пароль'
-                )
-            );
         }, 2000);
     });
 };

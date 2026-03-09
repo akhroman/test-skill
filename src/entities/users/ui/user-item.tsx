@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react';
 import { List, Skeleton } from 'antd';
 import { dayjs } from '@/shared/lib/dayjs';
-import { useUserFormContext } from '@/entities/users/model/user-form-context';
+import { useUserFormModalContext } from '@/features/users/model/user-form-modal-context';
 import { UserItemAvatar, UserItemTitle } from './user-item.styles';
 import { IUserItemProps } from '../model/types';
 
 export const UserItem: React.FC<IUserItemProps> = (props) => {
     const { avatar, createdAt, name, loading } = props;
-    const { openEdit } = useUserFormContext();
+    const { openEdit } = useUserFormModalContext();
     const formattedDate = dayjs.utc(createdAt)
         .local()
         .format('DD.MM.YYYY');

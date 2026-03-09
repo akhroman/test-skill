@@ -5,12 +5,12 @@ import { UsersList } from '@/entities/users/ui/user-list';
 import { useLogout } from '@/features/auth/model/useLogout';
 import { UserForm } from '@/features/users/ui/user-form';
 import { ButtonWrapper } from '@/shared/ui/button-wrapper';
-import { useUserFormContext } from '@/entities/users/model/user-form-context';
+import { useUserFormModalContext } from '@/features/users/model/user-form-modal-context';
 import { usersLoader } from '../model/users-loader';
 
 export const UsersPage: TCompoundPage = () => {
     const { logout } = useLogout();
-    const { isOpen, close, openCreate, currentUser } = useUserFormContext();
+    const { isOpen, close, openCreate, currentUser } = useUserFormModalContext();
     return (
         <>
             <Flex justify="flex-end" gap="large">
